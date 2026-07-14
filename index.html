@@ -130,16 +130,18 @@
 
     .phone-card {
       position: relative;
-      min-height: 520px;
+      aspect-ratio: 16 / 9;
+      width: min(100%, 720px);
+      min-height: 0;
       border-radius: 34px;
       padding: 18px;
       box-shadow: var(--shadow);
       border: 1px solid rgba(217, 154, 57, 0.26);
       background:
-        radial-gradient(circle at 82% 72%, rgba(217, 154, 57, 0.36) 0 26%, transparent 27%),
-        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.72), transparent 24%),
+        radial-gradient(circle at 80% 78%, rgba(217, 154, 57, 0.36) 0 30%, transparent 31%),
+        radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.72), transparent 24%),
         linear-gradient(135deg, #fff5dd 0%, #f5dbad 100%);
-      overflow: hidden;
+      overflow: visible;
     }
 
     .phone-card::before {
@@ -156,13 +158,13 @@
 
     .screen {
       position: absolute;
-      right: -8px;
-      top: 22px;
-      width: 54%;
-      min-height: 500px;
-      border-radius: 34px;
+      right: 20px;
+      top: 16px;
+      bottom: 16px;
+      width: 37%;
+      border-radius: 28px;
       background: #111812;
-      padding: 12px;
+      padding: 8px;
       box-shadow: 0 26px 50px rgba(36,48,38,0.25);
       transform: rotate(8deg);
       overflow: hidden;
@@ -170,10 +172,10 @@
     }
 
     .screen-inner {
-      min-height: 472px;
-      border-radius: 25px;
+      min-height: 100%;
+      border-radius: 20px;
       background: linear-gradient(180deg, #fffaf0, #fbf0df);
-      padding: 24px 18px;
+      padding: 18px 12px;
       transform: rotate(-0.5deg);
     }
 
@@ -193,15 +195,15 @@
     .preview-brand {
       position: absolute;
       left: 34px;
-      top: 140px;
+      top: 25%;
       max-width: 235px;
       z-index: 1;
     }
 
     .preview-logo {
-      width: 122px;
-      height: 122px;
-      border-radius: 28px;
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
       overflow: hidden;
       background: #f6dfb5;
       box-shadow: 0 14px 28px rgba(36,48,38,0.16);
@@ -213,7 +215,7 @@
     .preview-title {
       margin-top: 18px;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: 42px;
+      font-size: 36px;
       line-height: 0.95;
       color: #2f2418;
     }
@@ -221,34 +223,34 @@
     .preview-title span { color: #b88736; display: block; }
 
     .preview-subtitle {
-      margin-top: 24px;
+      margin-top: 18px;
       color: #8b7656;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.38em;
       text-transform: uppercase;
     }
 
     .phone-status { font-size: 11px; color: #39423b; font-weight: 800; }
-    .screen-inner h3 { margin: 20px 0 10px; font-size: 30px; line-height: 1; }
-    .screen-inner p { margin: 0 0 14px; color: #5f675f; font-size: 13px; }
+    .screen-inner h3 { margin: 15px 0 8px; font-size: 24px; line-height: 1; }
+    .screen-inner p { margin: 0 0 10px; color: #5f675f; font-size: 11px; }
 
-    .theme-list { display: grid; gap: 13px; }
+    .theme-list { display: grid; gap: 8px; }
 
     .theme-item {
       display: grid;
-      grid-template-columns: 46px 1fr 18px;
-      gap: 12px;
+      grid-template-columns: 36px 1fr 16px;
+      gap: 8px;
       align-items: center;
       border: 1px solid rgba(217,154,57,0.25);
-      border-radius: 18px;
-      padding: 12px;
+      border-radius: 14px;
+      padding: 8px;
       background: rgba(255,255,255,0.48);
     }
 
     .theme-item.active { border-color: #f28a13; }
-    .theme-icon { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: #fff7ea; color: #f28a13; font-weight: 900; }
-    .theme-item strong { display: block; font-size: 14px; }
+    .theme-icon { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; background: #fff7ea; color: #f28a13; font-weight: 900; }
+    .theme-item strong { display: block; font-size: 12px; }
     .theme-item small { color: #697268; }
     .radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #eadbc5; }
     .theme-item.active .radio { border: 5px solid #f28a13; }
@@ -315,10 +317,9 @@
       .grid { grid-template-columns: 1fr; }
       .privacy-banner { flex-direction: column; align-items: flex-start; }
       .nav { align-items: flex-start; flex-direction: column; }
-      .phone-card { min-height: 580px; }
-      .preview-brand { top: 44px; left: 28px; }
-      .screen { width: 70%; top: 220px; right: -16px; min-height: 340px; }
-      .screen-inner { min-height: 312px; }
+      .phone-card { aspect-ratio: 16 / 11; width: 100%; overflow: visible; }
+      .preview-brand { top: 36px; left: 28px; transform: scale(0.84); transform-origin: top left; }
+      .screen { width: 52%; top: 118px; right: 10px; bottom: 14px; }
       .screen-inner p, .theme-item small { display: none; }
     }
   </style>
@@ -339,7 +340,7 @@
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="privacy.html">Privacy Policy</a>
-      <a href="mailto:indiandevelopers7@gmail.com?subject=Personalized%20Prayer%20Counter%20Support&body=Hi%2C%20I%20would%20like%20to%20contact%20Personalized%20Prayer%20Counter.%20You%20can%20also%20reach%20me%20on%20Discord%20at%20birsheoran.">Contact</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
@@ -434,7 +435,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer id="contact">
     <span>© 2026 Personalized Prayer Counter. All rights reserved.</span>
     <span>Contact: Discord <strong>birsheoran</strong> · <a href="mailto:indiandevelopers7@gmail.com?subject=Personalized%20Prayer%20Counter%20Support">indiandevelopers7@gmail.com</a></span>
   </footer>
