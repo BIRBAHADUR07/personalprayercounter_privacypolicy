@@ -1,0 +1,26 @@
+---
+import { localizedPath, useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const footer = t('footer');
+const nav = t('nav');
+// The footer keeps the general contact address used by the original site; the
+// delete-account flow has its own dedicated support address.
+const contactEmail = 'indiandevelopers7@gmail.com';
+const contactSubject = encodeURIComponent('Personalized Prayer Counter Support');
+---
+
+<footer id="contact">
+  <span>{footer.rights}</span>
+  <span class="footer-links">
+    <span>{footer.contactPrefix} <strong>{footer.discord}</strong></span>
+    <a href={localizedPath('privacy', locale)}>{nav.privacy}</a>
+    <a href={localizedPath('delete-account', locale)}>{nav.deleteAccount}</a>
+    <a href={`mailto:${contactEmail}?subject=${contactSubject}`}>{contactEmail}</a>
+  </span>
+</footer>

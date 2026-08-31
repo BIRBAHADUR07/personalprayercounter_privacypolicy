@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Logo from './Logo.astro';
+import { localizedPath, useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = t('home');
+const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.prayercounter.app';
+const privacyHref = localizedPath('privacy', locale);
+---
+
+<BaseLayout locale={locale} route="home" title={home.title} description={home.description}>
+  <main id="main">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">{home.eyebrow}</div>
+        <h1>{home.heading}</h1>
+        <p>{home.lede}</p>
+        <div class="button-row">
+          <a class="button primary" href={playStoreUrl} target="_blank" rel="noopener noreferrer">
+            {home.ctaPrimary}
+          </a>
+          <a class="button secondary" href={privacyHref}>{home.ctaSecondary}</a>
+        </div>
+      </div>
+
+      <div class="preview-card" aria-label={home.previewAria}>
+        <div class="preview-brand">
+          <div class="app-icon" aria-hidden="true"><Logo /></div>
+          <div class="preview-title">
+            {home.previewTitleA} <span>{home.previewTitleB}</span> {home.previewTitleC}
+          </div>
+        </div>
+        <div class="preview-subtitle">{home.previewSubtitle}</div>
+        <div class="phone" aria-hidden="true">
+          <div class="camera"></div>
+          <div class="phone-screen">
+            <div class="phone-status">9:44</div>
+            <h3>{home.phoneHeading}</h3>
+            <p>{home.phoneLede}</p>
+            <div class="theme-list">
+              {
+                home.themes.map((theme, i) => (
+                  <div class:list={['theme-item', { active: i === home.themes.length - 1 }]}>
+                    <div class="theme-icon">{theme.icon}</div>
+                    <div>
+                      <strong>{theme.name}</strong>
+                      <small>{theme.desc}</small>
+                    </div>
+                    <div class="radio"></div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2>{home.featuresHeading}</h2>
+      <div class="grid">
+        {
+          home.features.map((feature) => (
+            <article class="feature">
+              <div class="feature-icon">{feature.icon}</div>
+              <h3>{feature.title}</h3>
+              <p>{feature.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section" id="download">
+      <div class="privacy-banner">
+        <div>
+          <h2>{home.bannerHeading}</h2>
+          <p>{home.bannerBody}</p>
+        </div>
+        <a class="button primary" href={privacyHref}>{home.bannerCta}</a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

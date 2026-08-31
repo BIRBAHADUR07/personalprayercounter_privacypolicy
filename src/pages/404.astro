@@ -1,0 +1,62 @@
+---
+// A static host serves this single file for every unmatched path, in any
+// language, so it cannot claim a canonical URL or hreflang set of its own: it
+// renders in the default locale, is marked noindex, and offers a way back into
+// each language instead.
+import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import Logo from '../components/Logo.astro';
+import {
+  SUPPORTED_LOCALES,
+  LANG_META,
+  DEFAULT_LOCALE,
+  localizedPath,
+  useTranslations,
+} from '../i18n/utils';
+
+const t = useTranslations(DEFAULT_LOCALE);
+const nf = t('notFound');
+const { dir, hreflang } = LANG_META[DEFAULT_LOCALE];
+---
+
+<html lang={hreflang} dir={dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{nf.title} · {t('site').name}</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#2f7d52" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main id="main" class="page">
+      <article class="card notfound">
+        <span class="notfound-mark" aria-hidden="true"><Logo /></span>
+        <p class="eyebrow">404</p>
+        <h1>{nf.heading}</h1>
+        <p>{nf.body}</p>
+        <p class="button-row">
+          <a class="button primary" href={localizedPath('home', DEFAULT_LOCALE)}>{nf.cta}</a>
+        </p>
+
+        <h2>{t('langSwitcher').label}</h2>
+        <ul class="notfound-langs">
+          {
+            SUPPORTED_LOCALES.map((code) => (
+              <li>
+                <a
+                  href={localizedPath('home', code)}
+                  hreflang={LANG_META[code].hreflang}
+                  lang={LANG_META[code].hreflang}
+                >
+                  {LANG_META[code].label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </article>
+    </main>
+    <SiteFooter locale={DEFAULT_LOCALE} />
+  </body>
+</html>

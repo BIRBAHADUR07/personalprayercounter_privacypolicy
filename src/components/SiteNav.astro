@@ -1,0 +1,35 @@
+---
+import Logo from './Logo.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { localizedPath, useTranslations, type Locale, type RouteId } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  route: RouteId;
+}
+
+const { locale, route } = Astro.props;
+const t = useTranslations(locale);
+const nav = t('nav');
+const home = localizedPath('home', locale);
+---
+
+<header>
+  <nav class="nav" aria-label={nav.aria}>
+    <a class="logo" href={home} aria-label={nav.homeAria}>
+      <span class="logo-mark" aria-hidden="true"><Logo /></span>
+      {t('site').name}
+    </a>
+    <div class="nav-links">
+      {/*
+        Always anchor against the localized home path, never a bare '#features':
+        on /privacy/ a bare fragment would point at the current page, which has
+        no #features section.
+      */}
+      <a href={`${home}#features`}>{nav.features}</a>
+      <a href={localizedPath('privacy', locale)}>{nav.privacy}</a>
+      <a href={localizedPath('delete-account', locale)}>{nav.deleteAccount}</a>
+      <LanguageSwitcher locale={locale} route={route} />
+    </div>
+  </nav>
+</header>
