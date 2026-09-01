@@ -1,0 +1,12 @@
+---
+// Every non-default locale: /<lang>/privacy
+import PrivacyPage from '../../components/PrivacyPage.astro';
+import { nonDefaultLocalePaths } from '../../i18n/paths';
+import type { Locale } from '../../i18n/utils';
+
+export const getStaticPaths = nonDefaultLocalePaths;
+
+const { locale } = Astro.props as { locale: Locale };
+---
+
+<PrivacyPage locale={locale} />

@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localizedPath, useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const p = t('privacy');
+const contactEmail = 'indiandevelopers7@gmail.com';
+---
+
+<BaseLayout locale={locale} route="privacy" title={p.title} description={p.description}>
+  <main id="main" class="policy">
+    <a class="back-link" href={localizedPath('home', locale)}>{p.back}</a>
+    <h1>{p.heading}</h1>
+    <p class="meta">{p.effectiveDate}</p>
+    <p class="meta">{p.appNameLine}</p>
+
+    <h2>{p.s1.h}</h2>
+    <p>{p.s1.p}</p>
+
+    <h2>{p.s2.h}</h2>
+    <p><strong>{p.s2.personalLabel}</strong></p>
+    <p>{p.s2.personalP}</p>
+    <p><strong>{p.s2.progressLabel}</strong></p>
+    <p>{p.s2.progressP}</p>
+    <p><strong>{p.s2.nonPersonalLabel}</strong></p>
+    <p>{p.s2.nonPersonalP}</p>
+    <ul>{p.s2.items.map((item) => <li>{item}</li>)}</ul>
+    <p>{p.s2.closing}</p>
+
+    <h2>{p.s3.h}</h2>
+    <p>{p.s3.p}</p>
+    <p><strong>{p.s3.admobLabel}</strong></p>
+    <p>{p.s3.admobP}</p>
+    <ul>{p.s3.items.map((item) => <li>{item}</li>)}</ul>
+    <p>
+      {p.s3.learnMore}{' '}
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
+        https://policies.google.com/privacy
+      </a>
+    </p>
+
+    <h2>{p.s4.h}</h2>
+    <p>{p.s4.p}</p>
+    <ul>{p.s4.items.map((item) => <li>{item}</li>)}</ul>
+    <p>{p.s4.closing}</p>
+
+    <h2>{p.s5.h}</h2>
+    <p>{p.s5.p}</p>
+
+    <h2>{p.s6.h}</h2>
+    <p>{p.s6.p}</p>
+
+    <h2>{p.s7.h}</h2>
+    <p>{p.s7.p}</p>
+
+    <h2>{p.s8.h}</h2>
+    <p>{p.s8.p}</p>
+    <p>
+      <strong>{p.s8.emailLabel}</strong>{' '}
+      <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+    </p>
+    <p>
+      <strong>{p.s8.deletionLabel}</strong>{' '}
+      <a href={localizedPath('delete-account', locale)}>{p.s8.deletionLink}</a>
+    </p>
+  </main>
+</BaseLayout>

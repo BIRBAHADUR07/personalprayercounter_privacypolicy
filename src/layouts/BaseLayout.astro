@@ -1,0 +1,87 @@
+---
+import '../styles/global.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import {
+  alternateLinks,
+  localizedUrl,
+  LANG_META,
+  SUPPORTED_LOCALES,
+  useTranslations,
+  type Locale,
+  type RouteId,
+} from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  route: RouteId;
+  title: string;
+  description: string;
+}
+
+const { locale, route, title, description } = Astro.props;
+const { dir, hreflang, og: ogLocale } = LANG_META[locale];
+
+const site = Astro.site ?? new URL('https://personalprayercounter.online');
+const canonical = localizedUrl(route, locale, site);
+
+// One <link rel="alternate" hreflang="..."> per supported language, plus
+// x-default. Every page in every language carries the full set, which is what
+// Google requires for the annotations to be treated as reciprocal.
+const alternates = alternateLinks(route, site);
+
+const t = useTranslations(locale);
+
+// One SoftwareApplication node per page, in the language of that page, so each
+// localized URL is described in its own right rather than only the English one.
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: t('site').name,
+  applicationCategory: 'LifestyleApplication',
+  operatingSystem: 'Android',
+  inLanguage: hreflang,
+  url: canonical,
+  description,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+---
+
+<html lang={hreflang} dir={dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    {
+      alternates.map((alt) => (
+        <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+      ))
+    }
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={ogLocale} />
+    {
+      SUPPORTED_LOCALES.filter((code) => code !== locale).map((code) => (
+        <meta property="og:locale:alternate" content={LANG_META[code].og} />
+      ))
+    }
+    <meta name="twitter:card" content="summary" />
+    <meta name="theme-color" content="#2f7d52" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t('nav').skipToContent}</a>
+    <SiteNav locale={locale} route={route} />
+    <slot />
+    <SiteFooter locale={locale} />
+  </body>
+</html>

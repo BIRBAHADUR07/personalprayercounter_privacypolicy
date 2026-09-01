@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const d = t('deleteAccount');
+const supportEmail = 'support@personalprayercounter.online';
+---
+
+<BaseLayout
+  locale={locale}
+  route="delete-account"
+  title={d.title}
+  description={d.description}
+>
+  <main id="main" class="page">
+    <article class="card">
+      <p class="eyebrow">{d.eyebrow}</p>
+      <h1>{d.heading}</h1>
+      <p>{d.intro}</p>
+
+      <section aria-labelledby="how-to-delete">
+        <h2 id="how-to-delete">{d.how.h}</h2>
+        <ol>
+          {/* Steps carry inline <strong> for the in-app menu path. */}
+          {d.how.steps.map((step) => <li set:html={step} />)}
+        </ol>
+      </section>
+
+      <section aria-labelledby="deleted-data">
+        <h2 id="deleted-data">{d.data.h}</h2>
+        <p>{d.data.p}</p>
+        <ul>{d.data.items.map((item) => <li>{item}</li>)}</ul>
+      </section>
+
+      <section aria-labelledby="data-retention">
+        <h2 id="data-retention">{d.retention.h}</h2>
+        <p>{d.retention.p}</p>
+      </section>
+
+      <section aria-labelledby="need-help">
+        <h2 id="need-help">{d.help.h}</h2>
+        <p>{d.help.p}</p>
+        <p class="notice">
+          <strong>{d.help.emailLabel}</strong>{' '}
+          <a href={`mailto:${supportEmail}`}>{supportEmail}</a>
+        </p>
+      </section>
+    </article>
+  </main>
+</BaseLayout>

@@ -1,0 +1,64 @@
+---
+import {
+  SUPPORTED_LOCALES,
+  LANG_META,
+  localizedPath,
+  useTranslations,
+  type Locale,
+  type RouteId,
+} from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  /** The page being viewed, so switching keeps you on the same page. */
+  route: RouteId;
+}
+
+const { locale, route } = Astro.props;
+const t = useTranslations(locale);
+const options = SUPPORTED_LOCALES.map((code) => ({
+  code,
+  ...LANG_META[code],
+  href: localizedPath(route, code),
+}));
+---
+
+<div class="lang-switcher">
+  <label class="lang-links" for="lang-select">{t('langSwitcher').label}</label>
+  <select
+    id="lang-select"
+    aria-label={t('langSwitcher').ariaLabel}
+    data-lang-switcher
+  >
+    {
+      options.map((opt) => (
+        <option value={opt.href} selected={opt.code === locale} lang={opt.hreflang}>
+          {opt.label}
+        </option>
+      ))
+    }
+  </select>
+
+  {/*
+    A <select> is invisible to crawlers, so the same destinations are also
+    emitted as real anchors. They are visually hidden but reachable by
+    keyboard-less crawlers and by users with JavaScript disabled.
+  */}
+  <nav class="lang-links" aria-label={t('langSwitcher').ariaLabel}>
+    {
+      options.map((opt) => (
+        <a href={opt.href} hreflang={opt.hreflang} lang={opt.hreflang} rel="alternate">
+          {opt.label}
+        </a>
+      ))
+    }
+  </nav>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLSelectElement>('[data-lang-switcher]').forEach((select) => {
+    select.addEventListener('change', () => {
+      if (select.value) window.location.href = select.value;
+    });
+  });
+</script>

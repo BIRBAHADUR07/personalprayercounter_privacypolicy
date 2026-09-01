@@ -1,0 +1,12 @@
+---
+// Every non-default locale: /<lang>/
+import HomePage from '../../components/HomePage.astro';
+import { nonDefaultLocalePaths } from '../../i18n/paths';
+import type { Locale } from '../../i18n/utils';
+
+export const getStaticPaths = nonDefaultLocalePaths;
+
+const { locale } = Astro.props as { locale: Locale };
+---
+
+<HomePage locale={locale} />
