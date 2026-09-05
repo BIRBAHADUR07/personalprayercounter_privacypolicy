@@ -67,16 +67,16 @@ export default {
       },
     ],
     bannerHeading: 'Simple, respectueux et transparent.',
-    bannerBody: 'Nous utilisons Google AdMob pour les publicités et gardons la politique facile à comprendre.',
+    bannerBody: 'Nous utilisons Unity LevelPlay pour les publicités et gardons la politique facile à comprendre.',
     bannerCta: 'Voir la politique de confidentialité',
   },
   privacy: {
     title: 'Politique de confidentialité - Compteur de Prières Personnalisé',
     description:
-      'Comment Compteur de Prières Personnalisé traite la progression du compteur, les données de l’appareil et la publicité Google AdMob.',
+      'Comment Compteur de Prières Personnalisé traite la progression du compteur, les données de l’appareil, la publicité Unity LevelPlay et les achats intégrés.',
     back: '← Retour à la page d’accueil',
     heading: 'Politique de confidentialité',
-    effectiveDate: 'Date d’entrée en vigueur : 7/11/2026',
+    effectiveDate: 'Date d’entrée en vigueur : 9/5/2026',
     appNameLine: 'Nom de l’application : Compteur de Prières Personnalisé',
     s1: {
       h: '1. Introduction',
@@ -86,7 +86,7 @@ export default {
       h: '2. Informations que nous collectons',
       personalLabel: 'Données personnelles :',
       personalP:
-        'Nous ne collectons ni ne conservons de données personnelles telles que le nom, l’adresse e-mail ou le numéro de téléphone.',
+        'L’application ne nécessite pas de compte et peut être utilisée entièrement sans connexion. Si vous choisissez de créer un compte, nous collectons votre adresse e-mail, votre nom affiché et votre identifiant de compte via Google Firebase afin d’identifier votre compte et de restaurer vos données.',
       progressLabel: 'Progression du compteur de prières :',
       progressP:
         'L’application est conçue pour enregistrer la progression du compteur de prières, comme les décomptes, les objectifs, les séries ou l’historique des séances, afin que les utilisateurs puissent suivre leur pratique dévotionnelle. Ces informations servent uniquement à fournir les fonctionnalités principales de comptage et de progression de l’application.',
@@ -95,26 +95,62 @@ export default {
       items: [
         'L’utilisation de l’application, comme la durée des séances et les écrans consultés',
         'Le type d’appareil et le système d’exploitation',
-        'Les données d’interaction publicitaire via Google AdMob',
+        'Les données d’interaction publicitaire via Unity LevelPlay',
       ],
       closing:
         'Ces données servent uniquement à améliorer les performances de l’application, l’expérience utilisateur et le fonctionnement publicitaire.',
     },
     s3: {
-      h: '3. Services tiers',
-      p: 'L’application utilise des services tiers susceptibles de collecter des informations.',
-      admobLabel: 'Google AdMob :',
-      admobP: 'Nous utilisons Google AdMob pour afficher des publicités. AdMob peut collecter :',
+      h: '3. Publicité',
+      p: 'L’application affiche des publicités fournies par Unity LevelPlay (Unity Technologies).',
+      placementLabel: 'Où les publicités apparaissent :',
+      placementP:
+        'Les publicités apparaissent uniquement dans le menu latéral et sur les écrans secondaires. Elles n’apparaissent jamais sur le compteur de prières ni pendant la prière.',
+      formatLabel: 'Formats publicitaires :',
+      formatP:
+        'Seules des bannières sont affichées. Il n’y a aucune publicité interstitielle, récompensée, à l’ouverture de l’application ou en plein écran.',
+      dataP:
+        'Unity et ses partenaires publicitaires peuvent accéder aux éléments suivants pour diffuser et mesurer les publicités :',
       items: [
-        'Des identifiants d’appareil',
-        'Une localisation approximative',
-        'Des données d’interaction publicitaire',
-        'Des informations de diagnostic et de performance',
+        'L’identifiant publicitaire Google (AD_ID) de l’appareil',
+        'Des informations de base sur l’appareil, comme le type d’appareil et le système d’exploitation',
+        'Des informations de base sur le réseau',
       ],
-      learnMore: 'En savoir plus :',
+      optOut:
+        'Vous pouvez réinitialiser votre identifiant publicitaire ou désactiver la personnalisation des publicités dans Paramètres Android > Google > Annonces.',
+      premiumNote: 'L’achat de Lifetime Premium supprime définitivement toute publicité.',
+      learnMore: 'Politique de confidentialité d’Unity :',
     },
     s4: {
-      h: '4. Autorisations',
+      h: '4. Achats intégrés',
+      p:
+        'L’application propose un achat unique, « Lifetime Premium », qui supprime toutes les publicités et débloque les thèmes premium.',
+      billingP:
+        'Les achats sont traités par Google Play Billing. L’application ne voit ni ne conserve jamais les informations de carte ou de paiement.',
+      restoreP:
+        'Google Play communique uniquement l’état de l’achat à l’application, afin que votre accès Premium puisse être restauré après une réinstallation ou sur un autre appareil.',
+      learnMore: 'Politique de confidentialité de Google :',
+    },
+    s5: {
+      h: '5. Données partagées avec des tiers',
+      p: 'L’application partage les données suivantes avec des services tiers :',
+      items: [
+        {
+          name: 'Unity LevelPlay / Unity Ads',
+          data: 'Identifiant publicitaire, informations sur l’appareil et le réseau, pour diffuser et mesurer les publicités.',
+        },
+        {
+          name: 'Google Play Billing',
+          data: 'État de l’achat, pour débloquer et restaurer Lifetime Premium.',
+        },
+        {
+          name: 'Google Firebase',
+          data: 'E-mail du compte, nom affiché et identifiant de compte, uniquement si vous choisissez de créer un compte. L’application est entièrement utilisable sans connexion.',
+        },
+      ],
+    },
+    s6: {
+      h: '6. Autorisations',
       p: 'L’application peut demander les autorisations suivantes :',
       items: [
         'L’accès à internet, pour les publicités et le fonctionnement de l’application',
@@ -123,20 +159,20 @@ export default {
       closing:
         'L’application n’accède ni aux contacts, ni aux photos, ni à d’autres données personnelles sensibles, sauf si une fonctionnalité l’exige clairement et que l’utilisateur l’autorise.',
     },
-    s5: {
-      h: '5. Sécurité des données',
+    s7: {
+      h: '7. Sécurité des données',
       p: 'Nous ne stockons pas de données personnelles sur nos serveurs. La progression du compteur de prières sert à faire fonctionner l’expérience de l’application. Les services tiers utilisés par l’application appliquent leurs propres pratiques de sécurité.',
     },
-    s6: {
-      h: '6. Vie privée des enfants',
+    s8: {
+      h: '8. Vie privée des enfants',
       p: 'Cette application ne s’adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles auprès d’enfants.',
     },
-    s7: {
-      h: '7. Modifications de cette politique',
+    s9: {
+      h: '9. Modifications de cette politique',
       p: 'Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Les mises à jour seront publiées sur cette page avec une date révisée.',
     },
-    s8: {
-      h: '8. Nous contacter',
+    s10: {
+      h: '10. Nous contacter',
       p: 'Pour toute question, contactez-nous à :',
       emailLabel: 'E-mail :',
       deletionLabel: 'Suppression du compte :',

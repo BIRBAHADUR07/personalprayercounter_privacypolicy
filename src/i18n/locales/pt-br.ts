@@ -67,16 +67,16 @@ export default {
       },
     ],
     bannerHeading: 'Simples, respeitoso e transparente.',
-    bannerBody: 'Usamos o Google AdMob para anúncios e mantemos a política fácil de entender.',
+    bannerBody: 'Usamos a Unity LevelPlay para anúncios e mantemos a política fácil de entender.',
     bannerCta: 'Ver a Política de Privacidade',
   },
   privacy: {
     title: 'Política de Privacidade - Contador de Orações Personalizado',
     description:
-      'Como o Contador de Orações Personalizado trata o progresso da contagem, os dados do dispositivo e a publicidade do Google AdMob.',
+      'Como o Contador de Orações Personalizado trata o progresso da contagem, os dados do dispositivo, a publicidade da Unity LevelPlay e as compras no app.',
     back: '← Voltar para a página inicial',
     heading: 'Política de Privacidade',
-    effectiveDate: 'Data de vigência: 7/11/2026',
+    effectiveDate: 'Data de vigência: 9/5/2026',
     appNameLine: 'Nome do app: Contador de Orações Personalizado',
     s1: {
       h: '1. Introdução',
@@ -86,7 +86,7 @@ export default {
       h: '2. Informações que coletamos',
       personalLabel: 'Dados pessoais:',
       personalP:
-        'Não coletamos nem armazenamos dados pessoais como nome, endereço de e-mail ou número de telefone.',
+        'O app não exige uma conta e pode ser usado integralmente sem fazer login. Se você optar por criar uma conta, coletamos seu endereço de e-mail, nome de exibição e id da conta por meio do Google Firebase, para que sua conta possa ser identificada e seus dados restaurados.',
       progressLabel: 'Progresso do contador de orações:',
       progressP:
         'O app foi criado para registrar o progresso do contador de orações, como contagens, metas, sequências ou histórico de sessões, para que os usuários possam acompanhar sua prática devocional. Essas informações são usadas apenas para oferecer os recursos principais de contagem e progresso do app.',
@@ -95,26 +95,62 @@ export default {
       items: [
         'Uso do app, como duração da sessão e telas visualizadas',
         'Tipo de dispositivo e sistema operacional',
-        'Dados de interação com anúncios por meio do Google AdMob',
+        'Dados de interação com anúncios por meio da Unity LevelPlay',
       ],
       closing:
         'Esses dados são usados apenas para melhorar o desempenho do app, a experiência do usuário e o funcionamento da publicidade.',
     },
     s3: {
-      h: '3. Serviços de terceiros',
-      p: 'O app utiliza serviços de terceiros que podem coletar informações.',
-      admobLabel: 'Google AdMob:',
-      admobP: 'Usamos o Google AdMob para exibir anúncios. O AdMob pode coletar:',
+      h: '3. Publicidade',
+      p: 'O app exibe anúncios fornecidos pela Unity LevelPlay (Unity Technologies).',
+      placementLabel: 'Onde os anúncios aparecem:',
+      placementP:
+        'Os anúncios aparecem apenas no menu lateral e em telas secundárias. Eles nunca aparecem no contador de orações nem durante a oração.',
+      formatLabel: 'Formatos de anúncio:',
+      formatP:
+        'Somente anúncios em banner são exibidos. Não há anúncios intersticiais, premiados, de abertura do app nem em tela cheia.',
+      dataP:
+        'A Unity e seus parceiros de publicidade podem acessar o seguinte para exibir e medir anúncios:',
       items: [
-        'Identificadores do dispositivo',
-        'Localização aproximada',
-        'Dados de interação com anúncios',
-        'Informações de diagnóstico e desempenho',
+        'O ID de publicidade do Google (AD_ID) do dispositivo',
+        'Informações básicas do dispositivo, como tipo de aparelho e sistema operacional',
+        'Informações básicas de rede',
       ],
-      learnMore: 'Saiba mais:',
+      optOut:
+        'Você pode redefinir seu ID de publicidade ou desativar a personalização de anúncios em Configurações do Android > Google > Anúncios.',
+      premiumNote: 'A compra do Lifetime Premium remove toda a publicidade permanentemente.',
+      learnMore: 'Política de privacidade da Unity:',
     },
     s4: {
-      h: '4. Permissões',
+      h: '4. Compras no app',
+      p:
+        'O app oferece uma única compra avulsa, “Lifetime Premium”, que remove todos os anúncios e desbloqueia os temas premium.',
+      billingP:
+        'As compras são processadas pelo Google Play Billing. O app nunca vê nem armazena dados de cartão ou de pagamento.',
+      restoreP:
+        'O Google Play fornece ao app apenas o status da compra, para que seu acesso Premium possa ser restaurado após reinstalar o app ou em outro dispositivo.',
+      learnMore: 'Política de privacidade do Google:',
+    },
+    s5: {
+      h: '5. Dados compartilhados com terceiros',
+      p: 'O app compartilha os seguintes dados com serviços de terceiros:',
+      items: [
+        {
+          name: 'Unity LevelPlay / Unity Ads',
+          data: 'ID de publicidade, informações do dispositivo e da rede, usados para exibir e medir anúncios.',
+        },
+        {
+          name: 'Google Play Billing',
+          data: 'Status da compra, usado para desbloquear e restaurar o Lifetime Premium.',
+        },
+        {
+          name: 'Google Firebase',
+          data: 'E-mail da conta, nome de exibição e id da conta, apenas se você optar por criar uma conta. O app é totalmente utilizável sem fazer login.',
+        },
+      ],
+    },
+    s6: {
+      h: '6. Permissões',
       p: 'O app pode solicitar as seguintes permissões:',
       items: [
         'Acesso à internet, para anúncios e funcionamento do app',
@@ -123,20 +159,20 @@ export default {
       closing:
         'O app não acessa contatos, fotos ou outros dados pessoais sensíveis, a menos que sejam claramente necessários para um recurso e permitidos pelo usuário.',
     },
-    s5: {
-      h: '5. Segurança dos dados',
+    s7: {
+      h: '7. Segurança dos dados',
       p: 'Não armazenamos dados pessoais em nossos servidores. O progresso do contador de orações é usado para dar suporte à experiência do app. Os serviços de terceiros usados pelo app seguem suas próprias práticas de segurança.',
     },
-    s6: {
-      h: '6. Privacidade de crianças',
+    s8: {
+      h: '8. Privacidade de crianças',
       p: 'Este app não é direcionado a crianças menores de 13 anos. Não coletamos intencionalmente dados pessoais de crianças.',
     },
-    s7: {
-      h: '7. Alterações nesta política',
+    s9: {
+      h: '9. Alterações nesta política',
       p: 'Podemos atualizar esta Política de Privacidade periodicamente. As atualizações serão publicadas nesta página com uma data revisada.',
     },
-    s8: {
-      h: '8. Fale conosco',
+    s10: {
+      h: '10. Fale conosco',
       p: 'Se você tiver alguma dúvida, entre em contato pelo:',
       emailLabel: 'E-mail:',
       deletionLabel: 'Exclusão de conta:',
