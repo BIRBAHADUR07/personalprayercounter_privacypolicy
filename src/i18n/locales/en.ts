@@ -72,16 +72,16 @@ export default {
       },
     ],
     bannerHeading: 'Simple, respectful, and transparent.',
-    bannerBody: 'We use Google AdMob for ads and keep the policy easy to understand.',
+    bannerBody: 'We use Unity LevelPlay for ads and keep the policy easy to understand.',
     bannerCta: 'View Privacy Policy',
   },
   privacy: {
     title: 'Privacy Policy - Personalized Prayer Counter',
     description:
-      'How Personalized Prayer Counter handles prayer counter progress, device data, and Google AdMob advertising.',
+      'How Personalized Prayer Counter handles prayer counter progress, device data, Unity LevelPlay advertising, and in-app purchases.',
     back: '← Back to landing page',
     heading: 'Privacy Policy',
-    effectiveDate: 'Effective Date: 7/11/2026',
+    effectiveDate: 'Effective Date: 9/5/2026',
     appNameLine: 'App Name: Personalized Prayer Counter',
     s1: {
       h: '1. Introduction',
@@ -91,7 +91,7 @@ export default {
       h: '2. Information We Collect',
       personalLabel: 'Personal Data:',
       personalP:
-        'We do not collect or store personal data such as name, email address, or phone number.',
+        'The app does not require an account and can be used fully without signing in. If you choose to create an account, we collect your email address, display name, and account id through Google Firebase so that your account can be identified and your data restored.',
       progressLabel: 'Prayer Counter Progress:',
       progressP:
         'The app is designed to track prayer counter progress, such as counts, goals, streaks, or session history, so users can follow their devotional practice. This information is used only to provide the core counter and progress features of the app.',
@@ -100,26 +100,62 @@ export default {
       items: [
         'App usage, such as session duration and screens viewed',
         'Device type and operating system',
-        'Ad interaction data through Google AdMob',
+        'Ad interaction data through Unity LevelPlay',
       ],
       closing:
         'This data is used only to improve app performance, user experience, and advertising functionality.',
     },
     s3: {
-      h: '3. Third-Party Services',
-      p: 'The app uses third-party services that may collect information.',
-      admobLabel: 'Google AdMob:',
-      admobP: 'We use Google AdMob to display ads. AdMob may collect:',
+      h: '3. Advertising',
+      p: 'The app displays advertising provided by Unity LevelPlay (Unity Technologies).',
+      placementLabel: 'Where ads appear:',
+      placementP:
+        'Ads appear only in the side menu and on secondary screens. They never appear on the prayer counter or during prayer.',
+      formatLabel: 'Ad formats:',
+      formatP:
+        'Only banner ads are shown. There are no interstitial, rewarded, app-open, or full-screen ads.',
+      dataP:
+        'Unity and its advertising partners may access the following to serve and measure ads:',
       items: [
-        'Device identifiers',
-        'Approximate location',
-        'Ad interaction data',
-        'Diagnostics and performance information',
+        'The device’s Google Advertising ID (AD_ID)',
+        'Basic device information, such as device type and operating system',
+        'Basic network information',
       ],
-      learnMore: 'Learn more:',
+      optOut:
+        'You can reset your advertising ID or opt out of ad personalisation in Android Settings > Google > Ads.',
+      premiumNote: 'Purchasing Lifetime Premium removes all advertising permanently.',
+      learnMore: 'Unity privacy policy:',
     },
     s4: {
-      h: '4. Permissions',
+      h: '4. In-App Purchases',
+      p:
+        'The app offers a single one-time purchase, “Lifetime Premium”, which removes all advertisements and unlocks premium themes.',
+      billingP:
+        'Purchases are processed by Google Play Billing. The app never sees or stores card or payment details.',
+      restoreP:
+        'Google Play provides the app with purchase status only, so your Premium access can be restored after reinstalling the app or on another device.',
+      learnMore: 'Google privacy policy:',
+    },
+    s5: {
+      h: '5. Data Shared With Third Parties',
+      p: 'The app shares the following data with third-party services:',
+      items: [
+        {
+          name: 'Unity LevelPlay / Unity Ads',
+          data: 'Advertising ID, device and network information, used to serve and measure ads.',
+        },
+        {
+          name: 'Google Play Billing',
+          data: 'Purchase status, used to unlock and restore Lifetime Premium.',
+        },
+        {
+          name: 'Google Firebase',
+          data: 'Account email, display name, and account id, only if you choose to create an account. The app is fully usable without signing in.',
+        },
+      ],
+    },
+    s6: {
+      h: '6. Permissions',
       p: 'The app may request the following permissions:',
       items: [
         'Internet access, for ads and app functionality',
@@ -128,20 +164,20 @@ export default {
       closing:
         'The app does not access contacts, photos, or other sensitive personal data unless clearly required by a feature and allowed by the user.',
     },
-    s5: {
-      h: '5. Data Security',
+    s7: {
+      h: '7. Data Security',
       p: 'We do not store personal data on our servers. Prayer counter progress is used to support the app experience. Third-party services used by the app follow their own security practices.',
     },
-    s6: {
-      h: '6. Privacy of Children',
+    s8: {
+      h: '8. Privacy of Children',
       p: 'This app is not directed toward children under 13. We do not knowingly collect personal data from children.',
     },
-    s7: {
-      h: '7. Changes to This Policy',
+    s9: {
+      h: '9. Changes to This Policy',
       p: 'We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised date.',
     },
-    s8: {
-      h: '8. Contact Us',
+    s10: {
+      h: '10. Contact Us',
       p: 'If you have any questions, contact us at:',
       emailLabel: 'Email:',
       deletionLabel: 'Account deletion:',

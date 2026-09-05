@@ -10,6 +10,8 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 const p = t('privacy');
 const contactEmail = 'indiandevelopers7@gmail.com';
+const unityPolicyUrl = 'https://unity.com/legal/privacy-policy';
+const googlePolicyUrl = 'https://policies.google.com/privacy';
 ---
 
 <BaseLayout locale={locale} route="privacy" title={p.title} description={p.description}>
@@ -34,39 +36,67 @@ const contactEmail = 'indiandevelopers7@gmail.com';
 
     <h2>{p.s3.h}</h2>
     <p>{p.s3.p}</p>
-    <p><strong>{p.s3.admobLabel}</strong></p>
-    <p>{p.s3.admobP}</p>
+    <p><strong>{p.s3.placementLabel}</strong></p>
+    <p>{p.s3.placementP}</p>
+    <p><strong>{p.s3.formatLabel}</strong></p>
+    <p>{p.s3.formatP}</p>
+    <p>{p.s3.dataP}</p>
     <ul>{p.s3.items.map((item) => <li>{item}</li>)}</ul>
+    <p>{p.s3.optOut}</p>
+    <p>{p.s3.premiumNote}</p>
     <p>
       {p.s3.learnMore}{' '}
-      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">
-        https://policies.google.com/privacy
+      <a href={unityPolicyUrl} target="_blank" rel="noopener noreferrer">
+        {unityPolicyUrl}
       </a>
     </p>
 
     <h2>{p.s4.h}</h2>
     <p>{p.s4.p}</p>
-    <ul>{p.s4.items.map((item) => <li>{item}</li>)}</ul>
-    <p>{p.s4.closing}</p>
+    <p>{p.s4.billingP}</p>
+    <p>{p.s4.restoreP}</p>
+    <p>
+      {p.s4.learnMore}{' '}
+      <a href={googlePolicyUrl} target="_blank" rel="noopener noreferrer">
+        {googlePolicyUrl}
+      </a>
+    </p>
 
     <h2>{p.s5.h}</h2>
     <p>{p.s5.p}</p>
+    <ul>
+      {
+        p.s5.items.map((item) => (
+          <li>
+            <strong>{item.name}</strong> — {item.data}
+          </li>
+        ))
+      }
+    </ul>
 
     <h2>{p.s6.h}</h2>
     <p>{p.s6.p}</p>
+    <ul>{p.s6.items.map((item) => <li>{item}</li>)}</ul>
+    <p>{p.s6.closing}</p>
 
     <h2>{p.s7.h}</h2>
     <p>{p.s7.p}</p>
 
     <h2>{p.s8.h}</h2>
     <p>{p.s8.p}</p>
+
+    <h2>{p.s9.h}</h2>
+    <p>{p.s9.p}</p>
+
+    <h2>{p.s10.h}</h2>
+    <p>{p.s10.p}</p>
     <p>
-      <strong>{p.s8.emailLabel}</strong>{' '}
+      <strong>{p.s10.emailLabel}</strong>{' '}
       <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
     </p>
     <p>
-      <strong>{p.s8.deletionLabel}</strong>{' '}
-      <a href={localizedPath('delete-account', locale)}>{p.s8.deletionLink}</a>
+      <strong>{p.s10.deletionLabel}</strong>{' '}
+      <a href={localizedPath('delete-account', locale)}>{p.s10.deletionLink}</a>
     </p>
   </main>
 </BaseLayout>
